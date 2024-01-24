@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  django_app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      network: host
+    container_name: django_app
+    image: django_app
+
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    tty: true
