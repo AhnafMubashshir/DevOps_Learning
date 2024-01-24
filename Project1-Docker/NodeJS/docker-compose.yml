@@ -4,6 +4,6 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: DevOps_Learning/Project1-Docker/NodeJS/Dockerfile
     ports:
       - "3000:3000"
