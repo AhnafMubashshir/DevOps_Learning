@@ -4,7 +4,7 @@ FROM node:18-alpine
 RUN npm install -g nodemon --verbose
 
 # Set the working directory in the container
-WORKDIR /mini-linkedin/user
+WORKDIR /nest_app/user
 
 # Copy your Node.js application files into the container
 COPY . .
