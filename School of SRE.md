@@ -110,5 +110,64 @@ When the packet reaches the IP layer, the transport layer populates source port,
 IP/Network layer populates destination IP(discovered from DNS) and then looks up the route to the destination IP on the routing table.
 
 
+## 2.Python and Web
+**What is the difference then, between java and python?**
+Java's compiler is more strict and sophisticated.It is a statically typed language. So the compiler is written in a way that it can verify types related errors during compile time.
+While python being a dynamic language, types are not known until a program is run. So in a way, python compiler is dumb (or, less strict). 
+
+Python, on the other hand, is an interpreted language. When you run a Python script, it goes through a two-step process:
+- **Compilation to Bytecode**: The Python source code is first compiled into bytecode. Bytecode is an intermediate representation that is platform-independent and is not directly executed by the CPU.
+
+- **Execution by Python Virtual Machine (VM)**: The Python bytecode is then executed by the Python interpreter or Python Virtual Machine (VM). The Python interpreter reads the bytecode and translates it into machine code on the fly. This introduces an additional layer of abstraction compared to languages like C or C++.
+
+**in case of C/C++, the output is machine code which can be directly read by your operating system. When you execute that program, your OS will know how exactly to run it. But this is not the case with bytecode.**
+
+##### **Advantages**:
+- **Portability**: Bytecode is platform-independent, allowing Python code to be executed on any system with a compatible Python interpreter.
+
+- **Dynamic Typing**: Python's dynamic typing and features like introspection are made possible by the interpretation of bytecode during runtime.
+
+## **_Python Concepts_
+- **Everything in Python is an object.**
+- That includes the functions, lists, dicts, classes, modules, a running function (instance of function definition), everything. In the CPython, it would mean there is an underlying struct variable for each object.
+
+In python's current execution context, all the variables are stored in a dict. It'd be a string to object mapping.
+ >>> float_number=42.0
+>>> def foo_func():
+...     pass
+...
+
+**NOTICE HOW VARIABLE NAMES ARE STRINGS stored in a dict
+>>> locals ()
+{'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 'float_number': 42.0, 'foo_func': <function foo_func at 0x1055847a0>}
+### Decorators
+In Python, decorators are a powerful and flexible way to **modify or extend the behavior of functions or methods without changing their source code directly.** 
+Decorators are often used for tasks like **logging, authentication, caching, and more.** Decorators are applied using the @decorator_name syntax.
+
+Function Decorators:
+
+- A decorator in Python is essentially a function that takes another function as an argument and adds or modifies its behavior.
+- You can define a decorator using the @decorator_name syntax above the function you want to decorate.
+
+**python source code**
+
+def my_decorator(func):
+    def wrapper():
+        print("Something is happening before the function is called.")
+        func()
+        print("Something is happening after the function is called.")
+    return wrapper
+
+@my_decorator
+def say_hello():
+    print("Hello!")
+say_hello()_
+**Output**:
+Something is happening before the function is called.
+Hello!
+Something is happening after the function is called.
+
+### Sockets
+
 
 ## _Git_
