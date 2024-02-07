@@ -388,3 +388,11 @@ This **workflow** might help you understand the working on components better:
 
 7. On the node plane side, kubelet makes sure that pods are locally kept in running state.
 
+## 3.Database Design
+
+1. ERD Diagram design from a crud expense apllication scenario
+2. Later Relational Database Design from this
+3. Implement query 
+4. Finally, Implement the whole application
+
+**github URL**: https://github.com/galib-1206/Expense_Tracker
