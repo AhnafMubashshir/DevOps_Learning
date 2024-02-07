@@ -174,14 +174,18 @@ Python, on the other hand, is an interpreted language. When you run a Python scr
 - That includes the functions, lists, dicts, classes, modules, a running function (instance of function definition), everything. In the CPython, it would mean there is an underlying struct variable for each object.
 
 In python's current execution context, all the variables are stored in a dict. It'd be a string to object mapping.
- >>> float_number=42.0
->>> def foo_func():
-...     pass
-...
 
+``` sh 
+ float_number=42.0
+ def foo_func():
+ pass
+```
 **NOTICE HOW VARIABLE NAMES ARE STRINGS stored in a dict
->>> locals ()
-{'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 'float_number': 42.0, 'foo_func': <function foo_func at 0x1055847a0>}
+
+```sh
+locals ()
+    {'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>, 'float_number': 42.0, 'foo_func': <function foo_func at 0x1055847a0>}
+```
 ### Decorators
 In Python, decorators are a powerful and flexible way to **modify or extend the behavior of functions or methods without changing their source code directly.** 
 Decorators are often used for tasks like **logging, authentication, caching, and more.** Decorators are applied using the @decorator_name syntax.
@@ -355,31 +359,32 @@ A container is your code bundled along with its entire runtime environment. That
 **Docker Image**
 A Docker image is a lightweight, standalone, and **executable package** that includes everything needed to run a piece of software, including the code, runtime, libraries, and system tools. It is a snapshot of a filesystem with the necessary components to run an application.
 
+
 ## **_Orchestration With Kubernetes_
 The Kubernetes components themselves are run as containers wrapped in Pods (which is the most basic kubernetes resource object).
 
-Control plane components:
-kube-apiserver
-etcd
-kube-scheduler
-kube-controller-manager
-Node plane components
-kubelet
-kube-proxy
-This workflow might help you understand the working on components better:
+**Control plane components**:
+- ube-apiserver
+- etcd
+- kube-scheduler
+- kube-controller-manager
+- Node plane components
+- kubelet
+- kube-proxy
 
-An SRE installs kubectl in their local machine. This is the client which interacts with the Kubernetes control plane (and hence the cluster).
+This **workflow** might help you understand the working on components better:
 
-They create a YAML file, called manifest which specifies the desired state of the resource (e.g a deployment names “frontend” needs 3 pods to always be running)
+1. An SRE installs kubectl in their local machine. This is the client which interacts with the Kubernetes control plane (and hence the cluster).
 
-When they issue a command to create objects based in the YAML file, the kubectl CLI tool sends a rest API request to the kube-apiserver.
+2. They create a YAML file, called manifest which specifies the desired state of the resource (e.g a deployment names “frontend” needs 3 pods to always be running)
 
-If the manifest is valid, it is stored as key value pairs in the etcd server on the control plane.
+3. When they issue a command to create objects based in the YAML file, the kubectl CLI tool sends a rest API request to the kube-apiserver.
 
-kube-scheduler chooses which nodes to put the containers on (basically schedules them)
+4. If the manifest is valid, it is stored as key value pairs in the etcd server on the control plane.
 
-There are controller processes (managed by kube-controller manager) which makes sure the current state of the cluster is equivalent to the desired state (here, 3 pods are indeed running in the cluster -> all is fine).
+5. kube-scheduler chooses which nodes to put the containers on (basically schedules them)
 
-On the node plane side, kubelet makes sure that pods are locally kept in running state.
+6. There are controller processes (managed by kube-controller manager) which makes sure the current state of the cluster is equivalent to the desired state (here, 3 pods are indeed running in the cluster -> all is fine).
 
-## 3.System Design
+7. On the node plane side, kubelet makes sure that pods are locally kept in running state.
+
